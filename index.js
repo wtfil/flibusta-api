@@ -4,7 +4,7 @@ var request = require('request');
 var unzip = require('unzip');
 var ORIGIN = 'http://flibusta.net';
 var SITE_URL = process.env.NODE_ENV === 'production' ?
-	'http://flibusta-api.herokuapp.com/' :
+	'http://flibusta-api.herokuapp.com' :
 	'http://127.0.0.1:3000';
 
 router.get('/search', search);
