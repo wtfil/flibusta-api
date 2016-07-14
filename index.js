@@ -58,7 +58,7 @@ function* search() {
 	this.body = results;
 }
 
-function* download(next) {
+function* download(ctx, next) {
 	var url = `${ORIGIN}/b/${this.params.id}/${this.params.format}`;
 	if (this.params.format === 'mobi') {
 		this.body = request(url);
