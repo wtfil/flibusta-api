@@ -20,7 +20,9 @@ function get(url) {
 function getUnzip(url, format) {
 	return cb => {
 		request(url)
+			.on('error', cb)
 			.pipe(unzip.Parse())
+			.on('error', cb)
 			.on('entry', entry => {
 				var ext = entry.path.split('.').pop();
 				var chunks = [];
