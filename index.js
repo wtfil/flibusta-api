@@ -62,7 +62,12 @@ function* download(next) {
 		this.body = request(url);
 		return;
 	}
-	var entry = yield getUnzip(url, this.params.format);
+	var entry;
+	try {
+		entry = yield getUnzip(url, this.params.format);
+	} catch (e) {
+		return next(e);
+	}
 	this.set('Content-Disposition', `attachment; filename=${entry.path}`);
 	this.set('Content-Type', 'application/octet-stream; charset=utf-8');
 	this.body = entry;
